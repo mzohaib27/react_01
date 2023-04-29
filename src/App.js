@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+
+import { render } from '@testing-library/react';
 import './App.css';
+import Users from './Components/Users';
+import React , {useEffect,useState} from 'react';
+import ParentCmp from './Components/ParentCmp';
+import { Button } from 'react-bootstrap';
+import ArrayListing from './Components/ArrayListing';
+
+
+
+
 
 function App() {
+const[state,setState]=useState(0)
+const[name,setName]=useState("M")
+  useEffect(()=>{
+    console.log("I am UseEffect due to state")
+  },[state])
+  
+  function updt(){
+    setName('Zohaib')
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Users data='name:zohaib'/>
+      <h1>Count : {state}</h1>
+      <Button variant="primary"  onClick={()=>{setState(state+1)}}>Update State</Button>
+      <br />
+      <h1>Name : {name}</h1>
+      <Button variant="primary" onClick={updt}>Update State</Button>
+      <ParentCmp />
+      <Users data = {state} data1 = {name}/> */}
+      <ArrayListing />
+      
+
     </div>
   );
+  
 }
 
 export default App;
